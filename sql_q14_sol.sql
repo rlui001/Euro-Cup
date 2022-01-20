@@ -2,7 +2,7 @@
 -- number of bookings they made for the entire tournament. 
 -- Sort your answer by the number of bookings in descending order.
 
-SELECT c.referee_name, count(m.match_no) AS bookings
+SELECT referee_name, count(m.match_no) AS bookings
 FROM player_booked b
 INNER JOIN match_mast m ON b.match_no = m.match_no
 INNER JOIN referee_mast r ON m.referee_id = r.referee_id
