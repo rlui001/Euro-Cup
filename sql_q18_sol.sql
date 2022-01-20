@@ -1,11 +1,8 @@
 -- Write a SQL query to find the highest number 
 -- of foul cards given in one match
 
-WITH total_fouls AS
-(
-SELECT match_no, COUNT(*) as total_foul_cards
-FROM penalty_shootout
+SELECT match_no, COUNT(*) AS cards_count
+FROM player_booked
 GROUP BY match_no
-)
-
-SELECT MAX(total_foul_cards) AS max FROM total_fouls;
+ORDER BY cards_count DESC
+LIMIT 1;
