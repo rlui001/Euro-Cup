@@ -4,6 +4,10 @@
 -- Used penalty_gk because matches with penalty shootouts in match_details
 -- does not guarantee a goal was scored, but this table
 -- implies that a gk was present during a penalty shootout
-SELECT DISTINCT venue_id FROM match_mast AS m
-INNER JOIN penalty_gk AS p
-USING (match_no);
+
+SELECT venue_name FROM soccer_venue WHERE venue_id IN
+(
+SELECT DISTINCT venue_id FROM match_mast
+INNER JOIN penalty_shootout
+USING (match_no)
+);
